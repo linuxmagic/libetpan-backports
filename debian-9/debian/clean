@@ -1,0 +1,4 @@
+doc/API/*.htm
+doc/README/*.htm
+doc/*.html
+doc/*.txt

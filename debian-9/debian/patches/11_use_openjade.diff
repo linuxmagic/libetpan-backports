@@ -1,0 +1,29 @@
+Description: Replace jade command with openjade
+Author: Ricardo Mones <mones@debian.org>
+Bug-Debian: https://bugs.debian.org/840485
+Last-Update: 2016-10-12
+
+diff -urN libetpan-1.6.orig/doc/Makefile.am libetpan-1.6/doc/Makefile.am
+--- libetpan-1.6.orig/doc/Makefile.am	2014-10-31 22:41:02.000000000 +0100
++++ libetpan-1.6/doc/Makefile.am	2016-10-12 20:25:16.490728314 +0200
+@@ -33,7 +33,7 @@
+ 
+ # DSL = /usr/lib/sgml/stylesheet/dsssl/docbook/nwalsh/html/docbook.dsl
+ DSL = /usr/share/sgml/docbook/stylesheet/dsssl/modular/html/docbook.dsl
+-JADE = jade
++JADE = openjade
+ HTML_RENDER = lynx -force_html -nolist -dump
+ 
+ # FIXME: This needs more work.  CLEANFILES/DISTCLEANFILES need to be
+diff -urN libetpan-1.6.orig/doc/Makefile.in libetpan-1.6/doc/Makefile.in
+--- libetpan-1.6.orig/doc/Makefile.in	2014-11-28 12:14:04.000000000 +0100
++++ libetpan-1.6/doc/Makefile.in	2016-10-12 20:25:16.514728026 +0200
+@@ -327,7 +327,7 @@
+ 
+ # DSL = /usr/lib/sgml/stylesheet/dsssl/docbook/nwalsh/html/docbook.dsl
+ DSL = /usr/share/sgml/docbook/stylesheet/dsssl/modular/html/docbook.dsl
+-JADE = jade
++JADE = openjade
+ HTML_RENDER = lynx -force_html -nolist -dump
+ 
+ # FIXME: This needs more work.  CLEANFILES/DISTCLEANFILES need to be

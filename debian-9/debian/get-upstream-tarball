@@ -1,0 +1,24 @@
+#!/bin/bash
+TEMPDIR=`mktemp -d`
+CURDIR=`pwd`
+trap "{ cd $CURDIR; rm -rf $TEMPDIR; exit 255; }" SIGINT EXIT
+function die() { echo "Error: $1"; exit 1; }
+VER="$1"
+test -z "${VER}" && die "missing argument version tag"
+cd $TEMPDIR
+wget -q -O - https://github.com/dinhviethoa/libetpan/archive/${VER}.tar.gz > ${VER}.tar.gz
+test ! -s ${1}.tar.gz && die "tag download from github failed"
+test -d libetpan-${VER} && rm -rf libetpan-${VER}
+tar xzf ${1}.tar.gz
+test ! -d libetpan-${VER} && die "unexpected directory in tarball"
+cd libetpan-${VER} && patch -p1 < $CURDIR/patches/10_unnecessary_linkage.diff && ./autogen.sh > ../autogen.log 2>&1 && make dist > ../makedist.log 2>&1 && cd ..
+test ! -f libetpan-${VER}/libetpan-${VER}.tar.gz && die "no tarball found after make dist"
+mv libetpan-${VER}/libetpan-${VER}.tar.gz . && rm -rf libetpan-${VER}
+tar xzf libetpan-${VER}.tar.gz
+test ! -d libetpan-${VER} && die "unexpected directory in dist tarball"
+tar cJf libetpan-${VER}.tar.xz libetpan-${VER} && rm -rf libetpan-${VER}
+test ! -s libetpan-${VER}.tar.xz && die "creating final tarball failed"
+mv -f $TEMPDIR/libetpan-${VER}.tar.xz $CURDIR/
+cd $CURDIR
+echo "Done."
+exit 0

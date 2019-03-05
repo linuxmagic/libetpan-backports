@@ -1,0 +1,4 @@
+tests/*.c usr/share/doc/libetpan-doc/tests
+tests/*.h usr/share/doc/libetpan-doc/tests
+tests/README usr/share/doc/libetpan-doc/tests
+tests/Makefile.am usr/share/doc/libetpan-doc/tests

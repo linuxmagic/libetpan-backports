@@ -1,0 +1,71 @@
+Source: libetpan
+Section: mail
+Priority: optional
+Homepage: http://www.etpan.org/libetpan.html
+Maintainer: Ricardo Mones <mones@debian.org>
+Uploaders: Shaun A. Johnson <shaun@linuxmagic.com>
+Build-Depends: debhelper (>= 9), autotools-dev, libtool, libdb-dev,
+ libgnutls28-dev, liblockfile-dev, libsasl2-dev, libexpat1-dev,
+ libcurl4-gnutls-dev (>= 7.16.4-5)
+Build-Depends-Indep: docbook-dsssl, openjade
+Standards-Version: 3.9.8
+Vcs-Git: https://github.com/linuxmagic/libetpan-backports.git/debian-9
+Vcs-Browser: https://github.com/linuxmagic/libetpan-backports.git
+
+Package: libetpan17
+Section: libs
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: mail handling library
+ libEtPan! is a mail library. It may be used for low-level mail handling:
+ network protocols (IMAP/NNTP/POP3/SMTP over TCP/IP with or without SSL),
+ local storage (mbox/MH/maildir) and message/MIME parsing.
+ .
+ This package provides shared library files.
+
+Package: libetpan-dev
+Section: libdevel
+Priority: extra
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}, libetpan17 (= ${binary:Version}),
+ libgnutls28-dev, liblockfile-dev, libsasl2-dev, libexpat1-dev,
+ libcurl4-gnutls-dev (>= 7.16.4-5)
+Suggests: libetpan-doc
+Description: mail handling library - development files
+ libEtPan! is a mail library. It may be used for low-level mail handling:
+ network protocols (IMAP/NNTP/POP3/SMTP over TCP/IP with or without SSL),
+ local storage (mbox/MH/maildir) and message/MIME parsing.
+ .
+ This package provides development files for the library.
+
+Package: libetpan-doc
+Section: doc
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}
+Description: mail handling library - API documentation
+ libEtPan! is a mail library. It may be used for low-level mail handling:
+ network protocols (IMAP/NNTP/POP3/SMTP over TCP/IP with or without SSL),
+ local storage (mbox/MH/maildir) and message/MIME parsing.
+ .
+ This package provides library API documentation and test sources.
+
+Package: libetpan-dbg
+Section: debug
+Architecture: any
+Multi-Arch: same
+Priority: extra
+Pre-Depends: ${misc:Pre-Depends}
+Depends: libetpan17 (= ${binary:Version}), ${misc:Depends}
+Description: debugging symbols for libetpan
+ libEtPan! is a mail library. It may be used for low-level mail handling:
+ network protocols (IMAP/NNTP/POP3/SMTP over TCP/IP with or without SSL),
+ local storage (mbox/MH/maildir) and message/MIME parsing.
+ .
+ This package provides debugging symbols associated with libetpan.
+ They will automatically be used by gdb when debugging libetpan-related
+ issues.
+
