@@ -1,4 +1,4 @@
-libetpan (1.6-3~bpo1.9.3+1) unstable; urgency=low
+libetpan (1.9.3-1~bpo9+1) unstable; urgency=low
 
   * Backport of new upstream version 1.9.3
   - Add new symbols in this version
