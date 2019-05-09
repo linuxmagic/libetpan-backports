@@ -1,10 +1,10 @@
-libetpan (1.9.3-1~bpo9+1) stretch-backports; urgency=low
+libetpan (1.9.3-2~bpo9+1) stretch-backports; urgency=low
 
-  * Backport of new upstream version 1.9.3
+  * Backport of new upstream version 1.9.3-2
   - Add new symbols in this version
   * Remove cruft from old debug package
 
- -- Shaun A. Johnson <shaun@linuxmagic.com>  Tue, 05 Mar 2019 10:39:47 -0800
+ -- Shaun A. Johnson <shaun@linuxmagic.com>  Thu, 09 May 2019 14:49:23 -0700
 
 libetpan (1.6-3) unstable; urgency=high
 
