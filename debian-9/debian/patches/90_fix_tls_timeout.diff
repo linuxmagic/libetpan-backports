@@ -1,0 +1,19 @@
+rigin: https://github.com/dinhviethoa/libetpan/commit/4aee22436809af67f23170fe15106b91ff2971e6
+Subject: Fix TLS timeouts with recent versions of GnuTLS
+ gnutls_handshake_set_timeout takes a timeout value in ms, but we were
+ providing a value in seconds. This means that on new-enough platforms
+ that use GnuTLS (e.g., Debian Buster), we would accidentally configure
+ a timeout 1,000 times shorter than requested.
+Bug-Debian: https://bugs.debian.org/927709
+
+--- a/src/data-types/mailstream_ssl.c
++++ b/src/data-types/mailstream_ssl.c
+@@ -636,7 +636,7 @@ static struct mailstream_ssl_data * ssl_data_new(int fd, time_t timeout,
+ 		timeout_value = mailstream_network_delay.tv_sec * 1000 + mailstream_network_delay.tv_usec / 1000;
+   }
+   else {
+-		timeout_value = timeout;
++		timeout_value = timeout * 1000;
+   }
+ #if GNUTLS_VERSION_NUMBER >= 0x030100
+ 	gnutls_handshake_set_timeout(session, timeout_value);
