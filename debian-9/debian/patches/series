@@ -2,3 +2,6 @@
 11_use_openjade.diff
 12_add_dummy_readme.diff
 90_fix_tls_timeout.diff
+91_fix_mailmime_write.diff
+92_mailimap_quota_getquotaroot_sigsegv.diff
+93_export_mailimap_has_quota.diff

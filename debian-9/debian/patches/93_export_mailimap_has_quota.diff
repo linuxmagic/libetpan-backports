@@ -1,0 +1,14 @@
+quota.h: add export of mailimap_has_quota
+ alex2grad authored and dinhviethoa committed on Sep 23, 2019
+--- a/src/low-level/imap/quota.h
++++ b/src/low-level/imap/quota.h
+@@ -52,6 +52,9 @@
+     const char * list_mb,
+     struct mailimap_quota_complete_data ** result);
+ 
++LIBETPAN_EXPORT
++int mailimap_has_quota(mailimap * session);
++
+ #ifdef __cplusplus
+ }
+ #endif
